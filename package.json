@@ -10,7 +10,7 @@
   "homepage": "https://github.com/hcavalieri/gatsby-source-mailchimp",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hcavalieri/gatsby-source-mailchimp"
+    "url": "https://github.com/solublestudio/gatsby-source-mailchimp"
   },
   "main": "gatsby-node.js",
   "scripts": {

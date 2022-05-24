@@ -1,6 +1,5 @@
 /node_modules
 configValidation.js
-gatsby-node.js
 fetchCampaigns.js
 fetchContent.js
 helpers.js
