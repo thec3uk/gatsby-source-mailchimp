@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/solublestudio/gatsby-source-mailchimp"
   },
-  "main": "gatsby-node.js",
+  "main": "gatsby-node.ts",
   "scripts": {
     "precommit": "tsc",
     "build": "tsc",

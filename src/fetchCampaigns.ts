@@ -84,10 +84,10 @@ export const fetchCampaigns = async ({
 
   const campaignsContent = [];
   for (const campaignRequest of campaignRequests) {
-    campaignsContent.push(await campaignRequest());
+    const thisCampaign = await campaignRequest;
+    campaignsContent.push(thisCampaign);
     await sleep(200);
   }
-
 
   for (let i = 0; i < campaignsContent.length; i++) {
     const meta = campaignsMetadata[i];
