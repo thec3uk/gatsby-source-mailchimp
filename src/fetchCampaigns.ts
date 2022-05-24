@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { IAuthParams } from './gatsby-node';
-import { colorizeLog, consoleColors } from './helpers';
+import { colorizeLog, consoleColors, sleep } from './helpers';
 
 export interface IFetchCampaigns {
   concurrReq: number;
@@ -64,7 +64,7 @@ export const fetchCampaigns = async ({
     // fetch from Mailchimp. If so, touch the node and don't mind about
     // fetching the content again in order to save some build time
     if (cachedCampaign && cachedCampaign.content === cacheableContent) {
-      touchNode({ nodeId: internalId });
+      touchNode({ id: internalId });
       continue;
     }
 
@@ -82,7 +82,12 @@ export const fetchCampaigns = async ({
     campaignsMetadata = [...campaignsMetadata, c];
   }
 
-  const campaignsContent = await Promise.all(campaignRequests);
+  const campaignsContent = [];
+  for (const campaignRequest of campaignRequests) {
+    campaignsContent.push(await campaignRequest());
+    await sleep(200);
+  }
+
 
   for (let i = 0; i < campaignsContent.length; i++) {
     const meta = campaignsMetadata[i];

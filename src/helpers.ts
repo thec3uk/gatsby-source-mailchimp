@@ -10,3 +10,7 @@ export const colorizeLog = (str: string, color = consoleColors.FgBlue) =>
 export const throwError = (error: string) => {
   throw new Error(colorizeLog(error, consoleColors.BgRed));
 };
+
+export async function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}

@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-mailchimp",
-  "version": "0.6.1",
+  "version": "1.0.0",
   "description": "Source plugin to fetch campaigns from Mailchimp into Gatsby",
   "author": "Henrique Cavalieri <@hcavalieri>",
   "license": "MIT",
@@ -38,7 +38,7 @@
     "typescript": "^3.1.6"
   },
   "peerDependencies": {
-    "gatsby": "^2.0.0"
+    "gatsby": "^4.0.0"
   },
   "husky": {
     "hooks": {
