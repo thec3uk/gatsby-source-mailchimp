@@ -1,4 +1,4 @@
 npm build
 cp package.json dist
-cp .npmrc dist
+cp README.md dist
 npm publish dist
