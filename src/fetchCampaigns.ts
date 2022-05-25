@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { IAuthParams } from './gatsby-node';
-import { colorizeLog, consoleColors, sleep } from './helpers';
+import axios from "axios";
+import { IAuthParams } from "./gatsby-node";
+import { colorizeLog, consoleColors, sleep } from "./helpers";
 
 export interface IFetchCampaigns {
   concurrReq: number;
@@ -27,7 +27,7 @@ export const fetchCampaigns = async ({
   actions,
   nodeType,
 }: IFetchCampaigns) => {
-  const { createNode, touchNode } = actions;
+  const { createNode, touchNode, getNode } = actions;
   const campaignsURL = `${rootURL}/campaigns`;
 
   const campaignsData = await axios.get(campaignsURL, {
@@ -35,9 +35,9 @@ export const fetchCampaigns = async ({
     params: {
       count: concurrReq,
       offset,
-      fields: campaignFields.join(','),
-      sort_field: 'send_time',
-      sort_dir: 'DESC',
+      fields: campaignFields.join(","),
+      sort_field: "send_time",
+      sort_dir: "DESC",
     },
   });
 
@@ -50,7 +50,7 @@ export const fetchCampaigns = async ({
         `${colorizeLog("A campaign couldn't be fetched", consoleColors.BgRed)}${
           c.settings && c.settings.subject_line
             ? `: ${c.settings.subject_line}`
-            : ''
+            : ""
         }`
       );
       continue;
@@ -64,7 +64,7 @@ export const fetchCampaigns = async ({
     // fetch from Mailchimp. If so, touch the node and don't mind about
     // fetching the content again in order to save some build time
     if (cachedCampaign && cachedCampaign.content === cacheableContent) {
-      touchNode({ id: internalId });
+      touchNode(getNode(internalId));
       continue;
     }
 
@@ -75,7 +75,7 @@ export const fetchCampaigns = async ({
       axios.get(contentURL, {
         ...authParams,
         params: {
-          fields: contentFields.join(','),
+          fields: contentFields.join(","),
         },
       }),
     ];
@@ -83,6 +83,7 @@ export const fetchCampaigns = async ({
   }
 
   const campaignsContent = [];
+
   for (const campaignRequest of campaignRequests) {
     const thisCampaign = await campaignRequest;
     campaignsContent.push(thisCampaign);
@@ -107,7 +108,7 @@ export const fetchCampaigns = async ({
       children: [],
       internal: {
         type: nodeType,
-        mediaType: 'text/html',
+        mediaType: "text/html",
         content: cacheableContent,
         contentDigest: createContentDigest(cacheableContent),
       },

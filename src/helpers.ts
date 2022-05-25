@@ -1,7 +1,7 @@
 export const consoleColors = {
-  BgRed: '\x1b[41m',
-  FgGreen: '\x1b[32m',
-  FgBlue: '\x1b[34m',
+  BgRed: "\x1b[41m",
+  FgGreen: "\x1b[32m",
+  FgBlue: "\x1b[34m",
 };
 
 export const colorizeLog = (str: string, color = consoleColors.FgBlue) =>
@@ -12,5 +12,5 @@ export const throwError = (error: string) => {
 };
 
 export async function sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
