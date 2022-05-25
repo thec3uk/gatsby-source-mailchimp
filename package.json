@@ -1,6 +1,6 @@
 {
   "name": "@solublestudio/gatsby-source-mailchimp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Source plugin to fetch campaigns from Mailchimp into Gatsby",
   "author": "Henrique Cavalieri <@hcavalieri>",
   "license": "MIT",
@@ -14,7 +14,7 @@
   },
   "main": "gatsby-node.js",
   "files": [
-    "dist/*.js",
+    "*.js",
     "package.json"
   ],
   "scripts": {
