@@ -1,7 +1,4 @@
 /node_modules
-configValidation.js
-fetchCampaigns.js
-fetchContent.js
-helpers.js
+/dist
 yarn-error.log
 backup
