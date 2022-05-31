@@ -27,7 +27,7 @@ export const fetchCampaigns = async ({
   actions,
   nodeType,
 }: IFetchCampaigns) => {
-  const { createNode, touchNode, getNode } = actions;
+  const { createNode, touchNode, getNodeById } = actions;
   const campaignsURL = `${rootURL}/campaigns`;
 
   const campaignsData = await axios.get(campaignsURL, {
@@ -64,7 +64,7 @@ export const fetchCampaigns = async ({
     // fetch from Mailchimp. If so, touch the node and don't mind about
     // fetching the content again in order to save some build time
     if (cachedCampaign && cachedCampaign.content === cacheableContent) {
-      touchNode(getNode(internalId));
+      touchNode(getNodeById({id: internalId, type: nodeType }));
       continue;
     }
 
