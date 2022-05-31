@@ -36,7 +36,7 @@ export interface IAuthParams {
 }
 
 export const sourceNodes = async (
-    { actions, cache, createContentDigest, reporter }: any,
+    { actions, cache, createContentDigest, getNode }: any,
     configOptions: IPluginOptions,
 ) => {
     const {
@@ -83,6 +83,7 @@ export const sourceNodes = async (
         campaignFields,
         contentFields,
         actions,
+        getNode,
         cache,
         createContentDigest,
     };
