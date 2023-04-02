@@ -44,7 +44,7 @@
         "typescript": "^3.1.6"
     },
     "peerDependencies": {
-        "gatsby": "^4.0.0"
+        "gatsby": "^5.0.0"
     },
     "husky": {
         "hooks": {
